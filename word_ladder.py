@@ -25,7 +25,7 @@ def gen_words(input_word):
 
     print('starting')
 
-    with open('/usr/share/dict/words', 'r') as words_fh:
+    with open('words.txt', 'r') as words_fh:
         for word in words_fh:
             words.append(word.strip())
 
