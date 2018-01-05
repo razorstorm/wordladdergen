@@ -4,6 +4,8 @@ import random
 
 import markovify
 import numpy as np
+import os
+cwd = os.getcwd()
 
 import requests
 from flask import request, Flask
@@ -25,7 +27,7 @@ def gen_words(input_word):
 
     print('starting')
 
-    with open('words.txt', 'r') as words_fh:
+    with open(cwd + '/words.txt', 'r') as words_fh:
         for word in words_fh:
             words.append(word.strip())
 
