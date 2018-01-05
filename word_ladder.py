@@ -15,7 +15,7 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 
 @app.route('/<input_word>', methods=['GET'])
 def serve(input_word):
-    print 'input_word', input_word
+    print('input_word', input_word)
     return gen_words(input_word)
 
 
@@ -23,7 +23,7 @@ def gen_words(input_word):
     words = []
     potential_words = []
 
-    print 'starting'
+    print('starting')
 
     with open('/usr/share/dict/words', 'r') as words_fh:
         for word in words_fh:
@@ -32,12 +32,11 @@ def gen_words(input_word):
     words_set = set(words)
 
     for i, letter in enumerate(input_word):
-        print potential_words
+        print(potential_words)
         if i == 0:
             # prepend
             for l in letters:
                 potential_word = l + input_word
-                print potential_word
                 if potential_word in words_set:
                     potential_words.append(potential_word)
 
