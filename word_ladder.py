@@ -50,3 +50,5 @@ def gen_words(input_word):
             # print potential_word
             if potential_word in words_set:
                 potential_words.append(potential_word)
+
+    return potential_words
