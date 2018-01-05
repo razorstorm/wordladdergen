@@ -9,7 +9,9 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 @app.route('/<input_word>', methods=['GET'])
 def serve(input_word):
     print('input_word', input_word)
-    return '<br>'.join(gen_words(input_word))
+    outputs = gen_words(input_word)
+    outputs.sort()
+    return '<br>'.join(outputs)
 
 
 def gen_words(input_word):
