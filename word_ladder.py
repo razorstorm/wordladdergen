@@ -1,14 +1,5 @@
 # coding=utf-8
-import json
-import random
-
-import markovify
-import numpy as np
-import os
-cwd = os.getcwd()
-
-import requests
-from flask import request, Flask
+from flask import Flask
 
 app = Flask(__name__)
 
@@ -18,7 +9,7 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 @app.route('/<input_word>', methods=['GET'])
 def serve(input_word):
     print('input_word', input_word)
-    return gen_words(input_word)
+    return '<br>'.join(gen_words(input_word))
 
 
 def gen_words(input_word):
@@ -27,7 +18,7 @@ def gen_words(input_word):
 
     print('starting')
 
-    with open(cwd + '/words.txt', 'r') as words_fh:
+    with open('words.txt', 'r') as words_fh:
         for word in words_fh:
             words.append(word.strip())
 
@@ -57,3 +48,4 @@ def gen_words(input_word):
                 potential_words.append(potential_word)
 
     return potential_words
+
