@@ -1,0 +1,1 @@
+web: gunicorn -w 4 word_ladder:app
