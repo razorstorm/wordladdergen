@@ -12,11 +12,19 @@ with open('words.txt', 'r') as words_fh:
 
 words_set = set(words)
 
+words_set_neighbors = gen_neighbors(words)
+
 
 @app.route('/<input_word>', methods=['GET'])
 def serve(input_word):
     print('input_word', input_word)
-    outputs = gen_words(input_word)
+    outputs = []
+
+    if input_word not in words_set_neighbors:
+        outputs = gen_words(input_word)
+    else:
+        outputs = words_set_neighbors[input_word]
+
     outputs.sort()
     return '<br>'.join(outputs)
 
@@ -48,3 +56,11 @@ def gen_words(input_word):
 
     return potential_words
 
+def gen_neighbors(words):
+    output_map = {}
+
+    for word in words:
+        neighbor_list = gen_words(word)
+        output_map[word] = neighbor_list
+
+    return output_map
