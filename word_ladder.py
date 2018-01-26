@@ -15,7 +15,7 @@ words_set = set(words)
 
 @app.route('/<input_word>', methods=['GET'])
 def serve(input_word):
-    print('input_word', input_word)
+    input_word = input_word.lower()
     outputs = gen_words(input_word)
     outputs.sort()
     return '<br>'.join(outputs)
